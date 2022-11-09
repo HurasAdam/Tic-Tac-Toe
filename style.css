@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.gameContainer{
+    width: 600px;
+    height: 600px;
+   
+    background-color: chocolate;
+    grid-template-columns: repeat(3,200px 200px 200px);
+    grid-template-rows: repeat(3, 200px 200px 2000px);
+}
+
+
+
+.gameFields{
+   
+width: 100px;
+height: 100px;
+background-color: 2px solid white;
+
+}
