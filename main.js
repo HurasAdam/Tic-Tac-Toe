@@ -9,6 +9,10 @@ div.addEventListener('click',pick)
 function pick(event){
     const item= event.target;
     console.log(item);
+  
+    if(item.innerHTML==='◯'||item.innerHTML==='✖'){
+        return;
+    }
 
     if(round%2===0){
         item.innerHTML=PLAYER1;
@@ -16,5 +20,9 @@ function pick(event){
     else if(round%2!==0){
         item.innerHTML=PLAYER2;
     }
+   
+
+   
+        
     round++
 }
