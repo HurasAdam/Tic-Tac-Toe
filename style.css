@@ -1,49 +1,62 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(45deg,rgba(10, 22, 30, 0.75),rgba(0,0,0,0.35));
+body {
+  width: 100vw;
+  height: 100vh;
 }
 
-
-
-.gameContainer{
-    width: 600px;
-    height: 600px;
-    gap:3px;
-    
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    display: grid;
-
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(115deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.75));
 }
 
-
-
-.gameFields{
-   background-color: wheat;
-   height: 100%;
-   width: 100%;
-   border: 2px solid black;
- cursor: pointer;
- font-weight:bold ;
- font-size: 64px;
- display: flex;
- align-items: center;
- justify-content: center;
-
+.reset {
+  height: 40px;
+  width: 100px;
+  margin: 20px 0px;
+  text-align: center;
+  border: 2px solid white;
+  background-color: black;
+  border-radius: 3px;
+  color: white;
 }
-.gameFields:hover{
-   
-    border: 4px solid black;
-    
+
+.board {
+  width: 450px;
+  height: 450px;
+  background-color: rgb(221, 221, 221);
+  grid-gap: 4px;
+  padding: 6px;
+  border: 1px solid rgb(255, 255, 255);
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  display: grid;
+  border-radius: 5px;
+}
+
+.board__field {
+  background-color: rgb(28, 29, 27);
+
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 8px;
+  color: white;
+  font-size: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s all ease-in;
+}
+.board__field:hover {
+  transform: scale(1.01);
+  background-color: rgba(0, 0, 0, 0.9);
 }

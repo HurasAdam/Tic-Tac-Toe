@@ -1,28 +1,82 @@
-const PLAYER1 = '✖';
-const PLAYER2 = '◯';
-let round =1;
-const gameFields= document.querySelectorAll('.gameFields');
-gameFields.forEach((div)=>{
-div.addEventListener('click',pick)
+const PLAYER1 = "✖";
+const PLAYER2 = "◯";
+let round = 1;
+
+const PL1 = [];
+const PL2 = [];
+const board__fields = document.querySelectorAll(".board__field");
+const resetButton = document.querySelector(".reset");
+board__fields.forEach((div, index) => {
+  div.addEventListener("click", (event) => {
+    const item = event.target;
+
+    if (item.innerHTML !== "") {
+      return;
+    }
+
+    if (round % 2 === 0) {
+      item.innerHTML = PLAYER1;
+      PL1.push(index);
+    } else if (round % 2 !== 0) {
+      item.innerHTML = PLAYER2;
+      PL2.push(index);
+    }
+    round++;
+  });
 });
 
-function pick(event){
-    const item= event.target;
-    console.log(item);
-  
-    if(item.innerHTML==='◯'||item.innerHTML==='✖'){
-        return;
-    }
+const winningConditions = [
+  [0, 1, 2],
+  [2, 1, 0],
+  [3, 4, 5],
+  [5, 4, 3],
+  [6, 7, 8],
+  [8, 7, 6],
+  [0, 4, 8],
+  [8, 4, 0],
+  [6, 4, 2],
+  [2, 4, 6],
+  [0, 3, 6],
+  [6, 3, 0],
+  [1, 4, 7],
+  [7, 4, 1],
+  [2, 5, 8],
+  [8, 5, 2],
+];
 
-    if(round%2===0){
-        item.innerHTML=PLAYER1;
-    }
-    else if(round%2!==0){
-        item.innerHTML=PLAYER2;
-    }
-   
+// const arrayComparator= (a,b)=>{
+//     if(a.length!==b.length){
+//         return false;
+//     }
+//     else{
+//         for(i=0;i<a.length;i++){
+//             if(a[i]!==b[i]){
+//                 return false;
+//             }
+//             else{
+//                 return true;
+//             }
+//         }
+//     }
+// }
 
-   
-        
-    round++
-}
+// const arrFilter=(a,b)=>{
+//     a.filter(element=>b.includes(element));
+// }
+
+// const check=PL1.filter(element=>winningConditions[0].includes(element))
+
+// winningConditions.forEach((element)=>{
+//     element.filter()
+// })
+
+const resetGame = () => {
+  PL1.splice(0, PL1.length);
+  PL2.splice(0, PL2.length);
+
+  board__fields.forEach((div) => {
+    div.innerHTML = "";
+  });
+};
+
+resetButton.addEventListener("click", resetGame);
