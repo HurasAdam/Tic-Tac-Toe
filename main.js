@@ -44,13 +44,6 @@ const winningConditions = [
   [8, 5, 2],
 ];
 
-function check(arr) {
-  let result = arr.every((element) => {
-    return element === winningConditions[element];
-  });
-  console.log(element);
-}
-
 const resetGame = () => {
   PL1.splice(0, PL1.length);
   PL2.splice(0, PL2.length);
