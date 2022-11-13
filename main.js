@@ -2,7 +2,7 @@ const PLAYER1 = "✖";
 const PLAYER2 = "◯";
 let round = 1;
 
-const PL1 = [1, 2, 3];
+const PL1 = [];
 const PL2 = [];
 const board__fields = document.querySelectorAll(".board__field");
 const resetButton = document.querySelector(".reset");
@@ -43,6 +43,12 @@ const winningConditions = [
   [2, 5, 8],
   [8, 5, 2],
 ];
+
+function isWinning(winningCombinations, player) {
+  return winningCombinations.some((combination) => {
+    return combination.every((cell) => player.includes(cell));
+  });
+}
 
 const resetGame = () => {
   PL1.splice(0, PL1.length);
