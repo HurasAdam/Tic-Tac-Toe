@@ -25,83 +25,65 @@ const PL2 = [];
 const board__fields = document.querySelectorAll(".board__field");
 const resetButton = document.querySelector(".reset");
 
-window.onload= setGame();
+window.onload = setGame();
 
-function setGame(){
-board__fields.forEach((div, index) => {
-  div.addEventListener("click", (event) => {
-    const item = event.target;
+function setGame() {
+  board__fields.forEach((div, index) => {
+    div.addEventListener("click", (event) => {
+      const item = event.target;
 
-    if (item.innerHTML !== "") {
-      return;
-    }
+      if (item.innerHTML === "") {
+        if (PL1.length === 3 || PL2.length === 3) {
+          return;
+        }
 
-    if (round % 2 === 0) {
-      item.innerHTML = PLAYER1;
-      PL1.push(index);
-    } else if (round % 2 !== 0) {
-      item.innerHTML = PLAYER2;
-      PL2.push(index);
-    }
-    round++;
-    isWinning();
-    
+        if (round % 2 === 0) {
+          item.innerHTML = PLAYER1;
+          PL1.push(index);
+        } else if (round % 2 !== 0) {
+          item.innerHTML = PLAYER2;
+          PL2.push(index);
+        }
+      } else {
+        return;
+      }
+
+      round++;
+      isWinning();
+    });
   });
-  displayWinner();
-});
 }
-
-
-
 
 function isWinning() {
-  let winner=''
- 
+  let winner = "";
 
-  const p1Choices=winningConditions.some((combination) => {
-   
+  const p1Choices = winningConditions.some((combination) => {
     return combination.every((cell) => PL1.includes(cell));
-    
   });
-  const p2Choices=winningConditions.some((combination) => {
-   
+  const p2Choices = winningConditions.some((combination) => {
     return combination.every((cell) => PL2.includes(cell));
-    
-  
   });
-  if(p1Choices===true){
-    winner='Player 1'
-    
-  }
-  else if(p2Choices===true){
-    winner='Player 2'
+  if (p1Choices === true) {
+    winner = "Player 1";
+  } else if (p2Choices === true) {
+    winner = "Player 2";
   }
 
-  if(winner==='Player 1'){
+  if (winner === "Player 1") {
     return winner;
-    
+  } else if (winner === "Player 2") {
+    return winner;
   }
-  else if(winner==='Player 2'){
-  return winner;
-  }
-  
- 
- 
 }
 
-
-
-
-
-function displayWinner(){
-const wrapper= document.querySelector('.wrapper');
-const resultBox=document.createElement('div');
-resultBox.classList.add('resultBox')
-wrapper.appendChild(resultBox);
-resultBox.innerHTML= isWinning();
-return;
+function displayWinner() {
+  const wrapper = document.querySelector(".wrapper");
+  const resultBox = document.createElement("div");
+  resultBox.classList.add("resultBox");
+  wrapper.appendChild(resultBox);
+  resultBox.innerHTML = isWinning();
+  return;
 }
-
 
 const resetGame = () => {
   PL1.splice(0, PL1.length);
