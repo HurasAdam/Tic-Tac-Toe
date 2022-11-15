@@ -7,6 +7,9 @@
 body {
   width: 100vw;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .wrapper {
@@ -16,7 +19,12 @@ body {
   flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
+  
   background: linear-gradient(115deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.75));
+}
+
+.wrapper.active{
+  filter: blur(12px);
 }
 
 .reset {
@@ -61,5 +69,41 @@ body {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-.resultBox {
+.winnerPopup{
+width: 500px;
+height: 300px;
+border-radius: 18px;
+background-color: rgba(17, 44, 106, 0.387);
+position: absolute;
+z-index: 20;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+row-gap: 40px;
+
+margin: 40px;
+visibility: hidden;
+
+}
+
+.winnerPopup.active{
+visibility: visible;
+}
+
+
+.winnerPopup span{
+  color: white;
+  font-size: 22px;
+  letter-spacing: 3px;
+}
+
+.winnerPopup button{
+  width: 85px;
+  height: 45px;
+  background-color: chocolate;
+  border-radius: 8px;
+  cursor: pointer;
+
+
 }

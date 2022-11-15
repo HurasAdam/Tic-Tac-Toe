@@ -24,7 +24,10 @@ const PL1 = [];
 const PL2 = [];
 const board__fields = document.querySelectorAll(".board__field");
 const resetButton = document.querySelector(".reset");
-
+const winnerPopup = document.querySelector(".winnerPopup");
+const wrapper = document.querySelector(".wrapper");
+const resetPopupButton = document.querySelector(".resetPopup");
+const announceWinnerSpan = document.querySelector(".announceWinner");
 window.onload = setGame();
 
 function setGame() {
@@ -79,16 +82,13 @@ function isWinning() {
 }
 
 function displayWinner() {
-  const wrapper = document.querySelector(".wrapper");
-  const resultBox = document.createElement("h1");
-  resultBox.classList.add("resultBox");
-  wrapper.appendChild(resultBox);
   if (isWinning() !== undefined) {
-    resultBox.innerHTML = isWinning();
+    announceWinnerSpan.innerHTML = `${isWinning()} has won`;
+    winnerPopup.classList.add("active");
+    wrapper.classList.add("active");
   } else {
     return;
   }
-  return resultBox;
 }
 
 const resetGame = () => {
@@ -101,3 +101,10 @@ const resetGame = () => {
 };
 
 resetButton.addEventListener("click", resetGame);
+resetPopupButton.addEventListener("click", resetGameFull);
+
+function resetGameFull() {
+  winnerPopup.classList.remove("active");
+  wrapper.classList.remove("active");
+  resetGame();
+}
