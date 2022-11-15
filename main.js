@@ -33,7 +33,7 @@ function setGame() {
       const item = event.target;
 
       if (item.innerHTML === "") {
-        if (PL1.length === 3 || PL2.length === 3) {
+        if (PL1.length === 3 && PL2.length === 3) {
           return;
         }
 
@@ -50,12 +50,13 @@ function setGame() {
 
       round++;
       isWinning();
+      displayWinner();
     });
   });
 }
 
 function isWinning() {
-  let winner = "";
+  let winner;
 
   const p1Choices = winningConditions.some((combination) => {
     return combination.every((cell) => PL1.includes(cell));
@@ -67,22 +68,27 @@ function isWinning() {
     winner = "Player 1";
   } else if (p2Choices === true) {
     winner = "Player 2";
+  } else if (PL1.length === 3 && PL2.length === 3 && winner === undefined) {
+    console.log("DRAW");
   }
 
   if (winner === "Player 1") {
-    return winner;
   } else if (winner === "Player 2") {
-    return winner;
   }
+  return winner;
 }
 
 function displayWinner() {
   const wrapper = document.querySelector(".wrapper");
-  const resultBox = document.createElement("div");
+  const resultBox = document.createElement("h1");
   resultBox.classList.add("resultBox");
   wrapper.appendChild(resultBox);
-  resultBox.innerHTML = isWinning();
-  return;
+  if (isWinning() !== undefined) {
+    resultBox.innerHTML = isWinning();
+  } else {
+    return;
+  }
+  return resultBox;
 }
 
 const resetGame = () => {
