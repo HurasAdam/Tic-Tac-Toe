@@ -1,7 +1,7 @@
 const PLAYER1 = "✖";
 const PLAYER2 = "◯";
-let PLAYER1SCORE = 0;
-let PLAYER2SCORE = 0;
+let PLAYER1SCORE =0;
+let PLAYER2SCORE =0;
 let round = 1;
 const winningConditions = [
   [0, 1, 2],
@@ -32,13 +32,13 @@ const resetPopupButton = document.querySelector(".resetPopup");
 const announceWinnerSpan = document.querySelector(".announceWinner");
 const playerOneTurn = document.querySelector(".player1Turn");
 const playerTwoTurn = document.querySelector(".player2Turn");
+const playerOneValue = document.querySelector(".playerOneValue");
+const playerTwoValue = document.querySelector(".playerTwoValue");
 window.onload = setGame();
 
 function setGame() {
-  const playerOneValue = document.querySelector(".playerOneValue");
-  const playerTwoValue = document.querySelector(".playerTwoValue");
-  playerOneValue.innerHTML = PLAYER1SCORE;
-  playerTwoValue.innerHTML = PLAYER2SCORE;
+
+
   board__fields.forEach((div, index) => {
     div.addEventListener("click", (event) => {
       const item = event.target;
@@ -100,6 +100,8 @@ function displayWinner() {
     announceWinnerSpan.innerHTML = isWinning();
     winnerPopup.classList.add("active");
     wrapper.classList.add("active");
+    playerOneValue.innerHTML = PLAYER1SCORE;
+    playerTwoValue.innerHTML = PLAYER2SCORE;
   } else {
     return;
   }
