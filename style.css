@@ -19,12 +19,13 @@ body {
   flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
-  
+
   background: linear-gradient(115deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.75));
 }
 
-.wrapper.active{
+.wrapper.active {
   filter: blur(12px);
+  pointer-events: none;
 }
 
 .reset {
@@ -62,48 +63,76 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: 0.2s all ease-in;
+  transition: 0.1s all ease-in;
 }
 .board__field:hover {
   transform: scale(1.01);
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-.winnerPopup{
-width: 500px;
-height: 300px;
-border-radius: 18px;
-background-color: rgba(17, 44, 106, 0.387);
-position: absolute;
-z-index: 20;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-row-gap: 40px;
-
-margin: 40px;
-visibility: hidden;
-
+.winnerPopup {
+  width: 500px;
+  height: 300px;
+  border-radius: 18px;
+  background-color: rgba(17, 44, 106, 0.387);
+  position: absolute;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 80px;
+  margin: 40px;
+  visibility: hidden;
 }
 
-.winnerPopup.active{
-visibility: visible;
+.winnerPopup.active {
+  visibility: visible;
 }
 
-
-.winnerPopup span{
+.winnerPopup span {
   color: white;
   font-size: 22px;
   letter-spacing: 3px;
 }
 
-.winnerPopup button{
+.winnerPopup button {
   width: 85px;
   height: 45px;
   background-color: chocolate;
   border-radius: 8px;
   cursor: pointer;
+}
 
+.winnerPopup button:hover {
+  background: rgb(240, 105, 8);
+}
 
+.scores {
+  width: 400px;
+  height: 30px;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  top: 10%;
+}
+
+.scores span,
+p {
+  font-size: 22px;
+  font-weight: 800;
+  color: white;
+}
+
+.player1Turn.active {
+  color: #ffa502;
+  box-shadow: 0 0 15px #d35400;
+  text-shadow: 0 0 15px #d35400;
+}
+
+.player2Turn.active {
+  color: #ffa502;
+  box-shadow: 0 0 15px #d35400;
+  text-shadow: 0 0 15px #d35400;
 }
