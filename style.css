@@ -20,7 +20,12 @@ body {
   justify-content: center;
   align-items: center;
 
-  background: linear-gradient(115deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.75));
+  background: linear-gradient(
+    45deg,
+    rgb(55, 65, 81),
+    rgb(17, 24, 39),
+    rgb(0, 0, 0)
+  );
 }
 
 .wrapper.active {
@@ -127,12 +132,8 @@ p {
 
 .player1Turn.active {
   color: #ffa502;
-  box-shadow: 0 0 15px #d35400;
-  text-shadow: 0 0 15px #d35400;
 }
 
 .player2Turn.active {
   color: #ffa502;
-  box-shadow: 0 0 15px #d35400;
-  text-shadow: 0 0 15px #d35400;
 }

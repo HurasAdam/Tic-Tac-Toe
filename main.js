@@ -1,7 +1,7 @@
 const PLAYER1 = "✖";
 const PLAYER2 = "◯";
-let PLAYER1SCORE =0;
-let PLAYER2SCORE =0;
+let PLAYER1SCORE = 0;
+let PLAYER2SCORE = 0;
 let round = 1;
 const winningConditions = [
   [0, 1, 2],
@@ -37,8 +37,6 @@ const playerTwoValue = document.querySelector(".playerTwoValue");
 window.onload = setGame();
 
 function setGame() {
-
-
   board__fields.forEach((div, index) => {
     div.addEventListener("click", (event) => {
       const item = event.target;
@@ -112,16 +110,21 @@ const resetGame = () => {
   PL2.splice(0, PL2.length);
   playerOneTurn.classList.remove("active");
   playerTwoTurn.classList.remove("active");
+  winnerPopup.classList.remove("active");
+  wrapper.classList.remove("active");
+
   board__fields.forEach((div) => {
     div.innerHTML = "";
   });
 };
 
-resetButton.addEventListener("click", resetGame);
-resetPopupButton.addEventListener("click", resetGameFull);
+resetPopupButton.addEventListener("click", resetGame);
+resetButton.addEventListener("click", resetPoints);
 
-function resetGameFull() {
-  winnerPopup.classList.remove("active");
-  wrapper.classList.remove("active");
+function resetPoints() {
+  PLAYER1SCORE = 0;
+  PLAYER2SCORE = 0;
+  playerOneValue.innerHTML = 0;
+  playerTwoValue.innerHTML = 0;
   resetGame();
 }
