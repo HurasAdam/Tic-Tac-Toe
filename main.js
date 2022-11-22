@@ -37,6 +37,9 @@ const playerTwoValue = document.querySelector(".playerTwoValue");
 window.onload = setGame();
 
 function setGame() {
+
+  playerOneValue.innerHTML=PLAYER1SCORE;
+  playerTwoValue.innerHTML=PLAYER2SCORE;
   board__fields.forEach((div, index) => {
     div.addEventListener("click", (event) => {
       const item = event.target;
@@ -47,15 +50,15 @@ function setGame() {
         }
 
         if (round % 2 === 0) {
-          playerOneTurn.classList.remove("active");
-          playerTwoTurn.classList.add("active");
-          item.innerHTML = PLAYER1;
-          PL1.push(index);
-        } else if (round % 2 !== 0) {
           playerTwoTurn.classList.remove("active");
           playerOneTurn.classList.add("active");
           item.innerHTML = PLAYER2;
           PL2.push(index);
+        } else if (round % 2 !== 0) {
+          playerOneTurn.classList.remove("active");
+          playerTwoTurn.classList.add("active");
+          item.innerHTML = PLAYER1;
+          PL1.push(index);
         }
       } else {
         return;
@@ -115,6 +118,7 @@ const resetGame = () => {
 
   board__fields.forEach((div) => {
     div.innerHTML = "";
+    round=1;
   });
 };
 
