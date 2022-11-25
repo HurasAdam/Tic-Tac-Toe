@@ -44,6 +44,14 @@ body {
   color: white;
 }
 
+.reset:hover {
+  transition: 0.3s ease-in-out;
+  border: 3px solid black;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
 .board {
   width: 450px;
   height: 450px;

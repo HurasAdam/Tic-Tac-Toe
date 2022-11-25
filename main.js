@@ -37,9 +37,8 @@ const playerTwoValue = document.querySelector(".playerTwoValue");
 window.onload = setGame();
 
 function setGame() {
-
-  playerOneValue.innerHTML=PLAYER1SCORE;
-  playerTwoValue.innerHTML=PLAYER2SCORE;
+  playerOneValue.innerHTML = PLAYER1SCORE;
+  playerTwoValue.innerHTML = PLAYER2SCORE;
   board__fields.forEach((div, index) => {
     div.addEventListener("click", (event) => {
       const item = event.target;
@@ -118,7 +117,7 @@ const resetGame = () => {
 
   board__fields.forEach((div) => {
     div.innerHTML = "";
-    round=1;
+    round = 1;
   });
 };
 
