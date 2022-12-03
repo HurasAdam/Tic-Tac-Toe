@@ -51,12 +51,15 @@ function setGame() {
         if (round % 2 === 0) {
           playerTwoTurn.classList.remove("active");
           playerOneTurn.classList.add("active");
+          item.setAttribute("style", "color:green");
           item.innerHTML = PLAYER2;
+
           PL2.push(index);
         } else if (round % 2 !== 0) {
           playerOneTurn.classList.remove("active");
           playerTwoTurn.classList.add("active");
           item.innerHTML = PLAYER1;
+          item.setAttribute("style", "color:red");
           PL1.push(index);
         }
       } else {
@@ -79,10 +82,10 @@ function isWinning() {
   const p2Choices = winningConditions.some((combination) => {
     return combination.every((cell) => PL2.includes(cell));
   });
-  if (p1Choices === true) {
+  if (p1Choices) {
     winner = "Player 1 has won";
     PLAYER1SCORE++;
-  } else if (p2Choices === true) {
+  } else if (p2Choices) {
     winner = "Player 2 has won";
     PLAYER2SCORE++;
   } else if (PL1.length === 3 && PL2.length === 3 && winner === undefined) {
